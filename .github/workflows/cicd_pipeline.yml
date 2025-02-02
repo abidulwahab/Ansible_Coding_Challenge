@@ -94,3 +94,23 @@ jobs:
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/inventory.json ansible/ansible_playbook.yml
 
+  inspec:
+    needs: ansible
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Inventory
+        uses: actions/download-artifact@v4
+        with:
+          name: ansible-inventory
+          path: ansible
+
+      - name: Install InSpec
+        run: |
+          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+
+      - name: Run InSpec Tests
+        run: |
+          inspec exec inspec-profile -t ssh://ubuntu@$(jq -r '.all.hosts[0]' ansible/inventory.json) --key-files ~/.ssh/id_rsa
