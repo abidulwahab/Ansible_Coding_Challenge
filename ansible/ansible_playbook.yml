@@ -60,10 +60,12 @@
         group: devops
         mode: 0700
 
-    - name: Add public key to authorized_keys
-      copy:
-        content: "{{ lookup('file', 'devops_key.pub') }}"
-        dest: /home/devops/.ssh/authorized_keys
-        owner: devops
-        group: devops
-        mode: 0600
+#    - name: Add public key to authorized_keys
+#      copy:
+#        content: "{{ lookup('file', 'devops_key.pub') }}"
+#        dest: /home/devops/.ssh/authorized_keys
+#        owner: devops
+#        group: devops
+#        mode: 0600
+
+
