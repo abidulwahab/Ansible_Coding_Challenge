@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ansible-inventory
-          path: inventory.json
+          path: ansible/inventory.json
 
   ansible:
     needs: dynamic-inventory
@@ -73,7 +73,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ansible-inventory
-          path: ansible/
+          path: ansible
         
       - name: Install Ansible
         run: sudo apt update && sudo apt install -y ansible
