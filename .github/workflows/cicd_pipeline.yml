@@ -54,6 +54,7 @@ jobs:
           AWS_REGION: eu-west-2
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: ansible
         
       - name: Upload Inventory as an Artifact
         uses: actions/upload-artifact@v4
