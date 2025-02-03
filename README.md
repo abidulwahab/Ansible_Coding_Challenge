@@ -9,16 +9,14 @@ This Project will have
 ├── terraform/
 
        ├── main.yml
-
        ├── output_variables.tf
-
        ├── project_variables.tf
-
        ├── statfile.tf
 
 **Ansible**
 
 ├── ansible/
+
        ├── ansible_playbook.yml
        ├── inventory.json
        ├── dynamic_inventory.py
@@ -26,6 +24,7 @@ This Project will have
 **Inspec**
 
 ├── inspec/
+
        ├── devops_challenge.rb
 
 
