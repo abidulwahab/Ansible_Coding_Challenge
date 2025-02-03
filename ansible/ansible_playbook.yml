@@ -1,9 +1,11 @@
 ---
 - hosts: all
   become: true
-  tasks:
   vars:
   ssh_public_key: "{{ lookup('env', 'SSH_PUBLIC_KEY') }}"
+  
+  tasks:
+
     # Install required software packages
     - name: Install nginx, git, and python3
       apt:
