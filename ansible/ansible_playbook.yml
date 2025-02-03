@@ -1,8 +1,6 @@
 ---
 - hosts: all
   become: true
-  vars:
-  ssh_public_key: "{{ lookup('env', 'SSH_PUBLIC_KEY') }}"
   
   tasks:
 
@@ -64,16 +62,12 @@
         group: devops
         mode: 0700
 
-    - name: Set SSH Public Key as an Environment Variable
-      run: echo "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}" >> $GITHUB_ENV
-
     - name: Add public key to authorized_keys
       copy:
-        content: "{{ ssh_public_key }}"
+        content: "{{ lookup('env', 'SSH_PUBLIC_KEY') }}"
         dest: /home/devops/.ssh/authorized_keys
         owner: devops
         group: devops
         mode: 0600
-    
     
 
