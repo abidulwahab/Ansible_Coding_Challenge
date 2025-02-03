@@ -1,20 +1,35 @@
 # Ansible Coding challenge
+This Project will have 
+
 
 # Directory structure for this project
 
-Ansible
-    >> ansible_playbook.yml
-    >> inventory.json
-    >> dynamic_inventory.py
+**Terraform**
 
-Inspec
-    >> devops_challenge.rb
-    
-Terraform 
-    >> main.tf
-    >> output_variables.tf
-    >> project_variables.tf
-    >> statfile.tf
+├── terraform/
+
+       ├── main.yml
+
+       ├── output_variables.tf
+
+       ├── project_variables.tf
+
+       ├── statfile.tf
+
+**Ansible**
+
+├── ansible/
+       ├── ansible_playbook.yml
+       ├── inventory.json
+       ├── dynamic_inventory.py
+
+**Inspec**
+
+├── inspec/
+       ├── devops_challenge.rb
+
+
+
  
 ### Steps to follow for this Github repository
 
