@@ -3,7 +3,7 @@ name: Deploy Infrastructure
 on:
   push:
     branches:
-      - main
+      - mains
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -90,7 +90,10 @@ jobs:
           echo "StrictHostKeyChecking no" >> ~/.ssh/config
           echo "UserKnownHostsFile=/dev/null" >> ~/.ssh/config
           chmod 600 ~/.ssh/config
-          
+
+      - name: Set SSH Public Key as an Environment Variable
+        run: echo "SSH_PUBLIC_KEY=${{ secrets.SSH_PUBLIC_KEY }}" >> $GITHUB_ENV
+
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/inventory.json ansible/ansible_playbook.yml
 
