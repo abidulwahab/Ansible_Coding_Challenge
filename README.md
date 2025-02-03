@@ -1,10 +1,9 @@
-# Ansible Coding challenge
-This Project will have 
-
-
-# Directory structure for this project
+### Ansible Coding challenge ###
 
 **Terraform**
+# EC2 (VM) will be provisioned by terraform code
+
+# Directory structure of Terraform code :-
 
 ├── terraform/
 
@@ -15,6 +14,36 @@ This Project will have
 
 **Ansible**
 
+# Configuration of EC2 (VM) with Ansible:
+
+• Install the following software packages on the VM:
+
+o nginx
+
+o git
+
+o python3
+
+
+• Configure the nginx server:
+
+o Default webpage should display: "Welcome to the DevOps Challenge".
+
+• Ensure the following system settings:
+
+o Disable root login via SSH.
+
+o Set a specific SSH port (e.g., 22).
+
+• Create a new system user devops:
+
+o Add it to the sudo group.
+
+o Set up an SSH key for the devops user.
+
+
+#Directory structure of Ansible code :-
+
 ├── ansible/
 
        ├── ansible_playbook.yml
@@ -22,6 +51,23 @@ This Project will have
        ├── dynamic_inventory.py
 
 **Inspec**
+
+# Compliance Testing with InSpec:
+
+• Verify the VM is configured correctly using an InSpec profile:
+
+o Check if nginx is installed and running.
+
+o Validate that the default nginx page contains the required message.
+
+o Ensure SSH root login is disabled.
+
+o Verify the SSH port is set to 22.
+
+o Ensure the devops user exists and is in the sudo group.
+
+
+# Directory structure of Inspec code :-
 
 ├── inspec/
 
