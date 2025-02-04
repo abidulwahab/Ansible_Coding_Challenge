@@ -119,5 +119,6 @@ jobs:
 
       - name: Run InSpec Tests
         run: |
-          export TARGET_HOST=$(jq -r '.all.hosts | keys[0]' ansible/inventory.json)
-          inspec exec inspec --controls=inspec/controls/devops_challenge.rb -t ssh://devops@$TARGET_HOST --key-files ~/.ssh/id_rsa
+          export TARGET_HOST=$(jq -r '.all.hosts[0]' ansible/inventory.json)
+          inspec exec inspec-profile --controls=devops_challenge.rb -t ssh://devops@$TARGET_HOST --key-files ~/.ssh/id_rsa
+
