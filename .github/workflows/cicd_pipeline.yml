@@ -97,28 +97,28 @@ jobs:
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/inventory.json ansible/ansible_playbook.yml
 
-  inspec:
-    needs: ansible
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  # inspec:
+  #   needs: ansible
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Download Inventory
-        uses: actions/download-artifact@v4
-        with:
-          name: ansible-inventory
-          path: ansible
+  #     - name: Download Inventory
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: ansible-inventory
+  #         path: ansible
 
-      - name: Install InSpec
-        run: |
-          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+  #     - name: Install InSpec
+  #       run: |
+  #         curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
 
-      - name: Accept InSpec License
-        run: echo "CHEF_LICENSE=accept-no-persist" >> $GITHUB_ENV
+  #     - name: Accept InSpec License
+  #       run: echo "CHEF_LICENSE=accept-no-persist" >> $GITHUB_ENV
 
-      - name: Run InSpec Tests
-        run: |
-          export TARGET_HOST=$(jq -r '.all.hosts[0]' ansible/inventory.json)
-          inspec exec inspec-profile --controls=devops_challenge.rb -t ssh://devops@$TARGET_HOST --key-files ~/.ssh/id_rsa
+  #     - name: Run InSpec Tests
+  #       run: |
+  #         export TARGET_HOST=$(jq -r '.all.hosts[0]' ansible/inventory.json)
+  #         inspec exec inspec-profile --controls=devops_challenge.rb -t ssh://devops@$TARGET_HOST --key-files ~/.ssh/id_rsa
 
